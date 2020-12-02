@@ -1,4 +1,4 @@
-const Manager = require('../lib/Manager');
+
 
 function generateTemplate(data) {
     return `

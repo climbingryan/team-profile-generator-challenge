@@ -1,13 +1,13 @@
 const inquirer = require('inquirer');
 
-
+const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
 const generateTemplate = require('./src/generateTemplate');
 const { writeFile, copyFile } = require('./src/writePage');
 
-const start = () => {
+function Start() {
     return inquirer.prompt([
             {
                 type: 'text',
@@ -61,10 +61,33 @@ const start = () => {
             }
         ]);
 }
-
+function addPeople() {
+    return inquirer.prompt([
+        {
+            type: 'confirm',
+            name: 'confirmAdd',
+            message: 'Would you like to add another employee?',
+            default: true
+        },
+        {
+            type: 'checkbox',
+            name: 'chooseEmployeeType',
+            message: 'What kind of employee would you like to add?',
+            choices: ['Intern', 'Engineer'],
+            when:({confirmAdd}) => {
+                if (confirmAdd) {
+                    return true;
+                } else {
+                    return false
+                }
+            }
+        }
+    ])
+}
 
 function init() {
-    start()
+    Start()
+        .then(addPeople)
         .then(questionData => {
             return generateTemplate(questionData);
         })
