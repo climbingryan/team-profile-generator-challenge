@@ -74,16 +74,63 @@ function addPeople() {
             name: 'chooseEmployeeType',
             message: 'What kind of employee would you like to add?',
             choices: ['Intern', 'Engineer'],
-            when:({confirmAdd}) => {
-                if (confirmAdd) {
-                    return true;
-                } else {
-                    return false
-                }
+        },
+        {
+            when: choices => {
+                if (choices.chooseEmployeeType === 'Intern') {
+                    return inquirer.prompt([
+                        {
+                            type: 'text',
+                            name: 'internName',
+                            message: 'what is the name of this intern?'
+                        },
+                        {
+                            type: 'number',
+                            name: 'internId',
+                            message: 'what is the interns id?/'
+                        },
+                        {
+                            type: 'text',
+                            name: 'internEmail',
+                            message: 'What is the interns email?'
+                        },
+                        {
+                            type: 'text',
+                            name: 'internSchool',
+                            message: 'What school does the intern attend?'
+                        }
+                    ]);
+                } 
             }
         }
     ])
 }
+
+// function intern() {
+//     return inquirer.prompt([
+//         {
+//             type: 'text',
+//             name: 'internName',
+//             message: 'what is the name of this intern?'
+//         },
+//         {
+//             type: 'number',
+//             name: 'internId',
+//             message: 'what is the interns id?/'
+//         },
+//         {
+//             type: 'text',
+//             name: 'internEmail',
+//             message: 'What is the interns email?'
+//         },
+//         {
+//             type: 'text',
+//             name: 'internSchool',
+//             message: 'What school does the intern attend?'
+//         }
+//     ])
+// }
+ 
 
 function init() {
     Start()
