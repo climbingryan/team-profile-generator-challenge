@@ -8,6 +8,8 @@ test('creates a Employee object', () => {
     expect(employee.email).toBe('');
 });
 
-// test('', () => {
-//     expect(employee.getName())
-// });
+test("get employee's name", () => {
+    const employee = new Employee('kevkev');
+    
+    expect(employee.getName()).toEqual(expect.any(String));
+});
