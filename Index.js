@@ -1,12 +1,14 @@
 const inquirer = require('inquirer');
 
-const Manager = require('./lib/Manager');
+
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
-function Start() {
-    inquirer
-        .prompt([
+const generateTemplate = require('./src/generateTemplate');
+const { writeFile, copyFile } = require('./src/writePage');
+
+const start = () => {
+    return inquirer.prompt([
             {
                 type: 'text',
                 name: 'teamManagerName',
@@ -34,7 +36,7 @@ function Start() {
             },
             {
                 type: 'text',
-                name: 'ManagerEmailAddress',
+                name: 'managerEmailAddress',
                 message: 'What is your email address',
                 validate: input => {
                     if (input) {
@@ -60,4 +62,19 @@ function Start() {
         ]);
 }
 
-Start();
+
+function init() {
+    start()
+        .then(questionData => {
+            return generateTemplate(questionData);
+        })
+        .then(writePage => {
+            return writeFile(writePage);
+        })
+        .then(response => {
+            console.log(response);
+            return copyFile();
+        })
+}
+
+init();
