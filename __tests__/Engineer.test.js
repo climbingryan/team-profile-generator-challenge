@@ -11,3 +11,9 @@ test('get github username from getGithub method', () => {
 
     expect(engineer.getGithub()).toEqual(expect.any(String));
 });
+
+test('get role of an engineer', () => {
+    const engineer = new Engineer();
+
+    expect(engineer.getRole()).toEqual(expect.stringContaining('engineer'));
+})
