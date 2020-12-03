@@ -97,7 +97,7 @@ function addPeople() {
         if (data.chooseEmployeeType === 'Intern') {
             return intern();
         } else {
-            return data;
+            return engineer();
         }
     })
 }
@@ -112,7 +112,7 @@ function intern() {
         {
             type: 'number',
             name: 'internId',
-            message: 'what is the interns id?/'
+            message: 'what is the interns id?'
         },
         {
             type: 'text',
@@ -123,10 +123,56 @@ function intern() {
             type: 'text',
             name: 'internSchool',
             message: 'What school does the intern attend?'
+        },
+        {
+            type: 'confirm',
+            name: 'addAnother',
+            message: 'Would you like to add another employee?'
         }
-    ])
+    ]).then(data => {
+        if (data.addAnother) {
+            return addPeople()
+        } else {
+            return data;
+        }
+    })
 }
- 
+function engineer() {
+    return inquirer.prompt([
+        {
+            type: 'text',
+            name: 'name',
+            message: 'What is the engineers name?'
+        },
+        {
+            type: 'number',
+            name: 'engineerId',
+            message: 'What is the engineers id?'
+        },
+        {
+            type: 'text',
+            name: 'engineerEmail',
+            message: 'What is the engineers email?'
+        },
+        {
+            type: 'text',
+            name: 'engineerGithub',
+            message: 'What is the engineers github?'
+        },
+        {
+            type: 'confirm',
+            name: 'addAnother',
+            message: 'Would you like to add another employee?'
+        }
+            // If confirm add true restart
+    ]).then(data => {
+        if (data.addAnother) {
+            return addPeople()
+        } else {
+            return data;
+        }
+    })
+}
 
 function init() {
     Start()

@@ -39,4 +39,4 @@ function generateTemplate(data) {
 </html>
         `      
 }
-module.exports = generateTemplate; // /*${Manager.getRole()}
+module.exports = generateTemplate;
