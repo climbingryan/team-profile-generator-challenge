@@ -1,9 +1,5 @@
 const inquirer = require('inquirer');
 
-const Manager = require('./lib/Manager');
-const Engineer = require('./lib/Engineer');
-const Intern = require('./lib/Intern');
-
 const generateTemplate = require('./src/generateTemplate');
 const { writeFile, copyFile } = require('./src/writePage');
 
@@ -131,17 +127,18 @@ function intern() {
         }
     ]).then(data => {
         if (data.addAnother) {
-            return addPeople()
+            return addPeople();
         } else {
             return data;
         }
-    })
+    });
 }
+
 function engineer() {
     return inquirer.prompt([
         {
             type: 'text',
-            name: 'name',
+            name: 'engineername',
             message: 'What is the engineers name?'
         },
         {
@@ -164,8 +161,11 @@ function engineer() {
             name: 'addAnother',
             message: 'Would you like to add another employee?'
         }
-            // If confirm add true restart
-    ]).then(data => {
+            
+     ])//.then(data => {
+
+     //}) // If confirm add true restart
+    .then(data => {
         if (data.addAnother) {
             return addPeople()
         } else {

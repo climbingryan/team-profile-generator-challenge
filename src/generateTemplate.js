@@ -1,6 +1,50 @@
+function internTemplate(data) {
+    if(!data) {
+        return '';
+    }
+    return `
+            <div class="card">
+                <div class="card-head">
+                    <h3>${data.internName}</h3>
+                    <h4>Role: </h4>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>ID: ${data.internId}</li>
+                        <li>Email: <a href="mailto: ${data.internEmail}" target="none">${data.internEmail}</a></li>
+                        <li>School: ${data.internSchool}</li>
+                    </ul>
+                </div>
+            </div>
+        `
+}
 
+function engineerTemplate(data) {
+    if(!data) {
+        return '';
+    }
 
-function generateTemplate(data) {
+    return `
+            <div class="card">
+                <div class="card-head">
+                    <h3>${data.engineerName}</h3>
+                    <h4>Role: </h4>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>ID: ${data.engineerId}</li>
+                        <li>Email: <a href="mailto: ${data.engineerEmail}" target="none">${data.engineerEmail}</a></li>
+                        <li>Github: <a href="https://github.com/${data.engineerGithub}" target="none">${data.engineerGithub}</a></li>
+                    </ul>
+                </div>
+            </div>
+            `
+}
+
+module.exports = data => {
+
+    const { intern, engineer, manager } = data;
+
     return `
     <!DOCTYPE html>
 <html lang="en">
@@ -21,22 +65,22 @@ function generateTemplate(data) {
         <body>
             <div class="card">
                 <div class="card-head">
-                    <h3>${data.teamManagerName}</h3>
+                    <h3>${manager.teamManagerName}</h3>
                     <h4>Role: </h4>
                 </div>
                 <div class="card-body">
                     <ul>
-                        <li>ID: ${data.employeeId}</li>
-                        <li>Email: <a href="mailto: ${data.managerEmailAddress}" target="none">${data.managerEmailAddress}</a></li>
-                        <li>Office number: ${data.officeNumber}</li>
+                        <li>ID: ${manager.employeeId}</li>
+                        <li>Email: <a href="mailto: ${manager.managerEmailAddress}" target="none">${manager.managerEmailAddress}</a></li>
+                        <li>Office number: ${manager.officeNumber}</li>
                     </ul>
                 </div>
             </div>
-
+            ${internTemplate(intern)}
+            ${engineerTemplate(engineer)}
         </body>
     </main>
 </body>
 </html>
         `      
-}
-module.exports = generateTemplate;
+} 
