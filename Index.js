@@ -92,15 +92,14 @@ function addPeople() {
             name: 'chooseEmployeeType',
             message: 'What kind of employee would you like to add?',
             choices: ['Intern', 'Engineer'],
-        },
-        {
-            when: (answer) => {
-                if (answer.chooseEmployeeType === 'Intern') {
-                    intern();
-                } 
-            }
         }
-    ])
+    ]).then(data => {
+        if (data.chooseEmployeeType === 'Intern') {
+            return intern();
+        } else {
+            return data;
+        }
+    })
 }
 
 function intern() {
