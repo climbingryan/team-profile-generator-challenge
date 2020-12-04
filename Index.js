@@ -3,6 +3,8 @@ const inquirer = require('inquirer');
 const generateTemplate = require('./src/generateTemplate');
 const { writeFile, copyFile } = require('./src/writePage');
 
+const teamMembers = [];
+
 function Start() {
     return inquirer.prompt([
             {
@@ -74,10 +76,12 @@ function Start() {
                 } 
             }
         ]).then(data => {
+            teamMembers.push(data);
+            console.log(teamMembers);
             if (data.confirmAdd) {
                 return addPeople()
             } else {
-                return data;
+                return teamMembers;
             }
         })
 }
@@ -126,6 +130,7 @@ function intern() {
             message: 'Would you like to add another employee?'
         }
     ]).then(data => {
+        teamMembers.push(data);
         if (data.addAnother) {
             return addPeople();
         } else {
@@ -144,7 +149,14 @@ function engineer() {
         {
             type: 'number',
             name: 'engineerId',
-            message: 'What is the engineers id?'
+            message: 'What is the engineers id?',
+            validate: input => {
+                if (input) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
         },
         {
             type: 'text',
@@ -166,6 +178,7 @@ function engineer() {
 
      //}) // If confirm add true restart
     .then(data => {
+        teamMembers.push(data);
         if (data.addAnother) {
             return addPeople()
         } else {
@@ -177,7 +190,8 @@ function engineer() {
 function init() {
     Start()
         .then(questionData => {
-            return generateTemplate(questionData);
+            console.log(teamMembers);
+            return generateTemplate(teamMembers);
         })
         .then(writePage => {
             return writeFile(writePage);
@@ -187,5 +201,4 @@ function init() {
             return copyFile();
         })
 }
-
 init();

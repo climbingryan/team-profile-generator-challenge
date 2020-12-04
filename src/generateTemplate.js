@@ -1,40 +1,40 @@
-function internTemplate(data) {
-    if(!data) {
+function internTemplate(intern) {
+    if(!intern) {
         return '';
     }
     return `
             <div class="card">
                 <div class="card-head">
-                    <h3>${data.internName}</h3>
+                    <h3>${intern.internName}</h3>
                     <h4>Role: </h4>
                 </div>
                 <div class="card-body">
                     <ul>
-                        <li>ID: ${data.internId}</li>
-                        <li>Email: <a href="mailto: ${data.internEmail}" target="none">${data.internEmail}</a></li>
-                        <li>School: ${data.internSchool}</li>
+                        <li>ID: ${intern.internId}</li>
+                        <li>Email: <a href="mailto: ${intern.internEmail}" target="none">${intern.internEmail}</a></li>
+                        <li>School: ${intern.internSchool}</li>
                     </ul>
                 </div>
             </div>
         `
 }
 
-function engineerTemplate(data) {
-    if(!data) {
+function engineerTemplate(engineer) {
+    if(!engineer) {
         return '';
     }
 
     return `
             <div class="card">
                 <div class="card-head">
-                    <h3>${data.engineerName}</h3>
+                    <h3>${engineer.engineerName}</h3>
                     <h4>Role: </h4>
                 </div>
                 <div class="card-body">
                     <ul>
-                        <li>ID: ${data.engineerId}</li>
-                        <li>Email: <a href="mailto: ${data.engineerEmail}" target="none">${data.engineerEmail}</a></li>
-                        <li>Github: <a href="https://github.com/${data.engineerGithub}" target="none">${data.engineerGithub}</a></li>
+                        <li>ID: ${engineer.engineerId}</li>
+                        <li>Email: <a href="mailto: ${engineer.engineerEmail}" target="none">${engineer.engineerEmail}</a></li>
+                        <li>Github: <a href="https://github.com/${engineer.engineerGithub}" target="none">${engineer.engineerGithub}</a></li>
                     </ul>
                 </div>
             </div>
@@ -42,8 +42,8 @@ function engineerTemplate(data) {
 }
 
 module.exports = data => {
-
-    const { intern, engineer, manager } = data;
+    console.log(data);
+    const [ manager, role ] = data;
 
     return `
     <!DOCTYPE html>
@@ -76,8 +76,8 @@ module.exports = data => {
                     </ul>
                 </div>
             </div>
-            ${internTemplate(intern)}
-            ${engineerTemplate(engineer)}
+            ${internTemplate(role)}
+            ${engineerTemplate(role)}
         </body>
     </main>
 </body>
