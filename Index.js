@@ -4,6 +4,10 @@ const generateTemplate = require('./src/generateTemplate');
 const { writeFile, copyFile } = require('./src/writePage');
 
 const teamMembers = [];
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+const Manager = require('./lib/Manager');
+
 
 function Start() {
     return inquirer.prompt([
@@ -21,7 +25,7 @@ function Start() {
             },
             {
                 type: 'number',
-                name: 'employeeId',
+                name: 'managerId',
                 message: 'What is your employee id?',
                 validate: input => {
                     if (input) {
@@ -34,7 +38,7 @@ function Start() {
             },
             {
                 type: 'text',
-                name: 'managerEmailAddress',
+                name: 'managerEmail',
                 message: 'What is your email address',
                 validate: input => {
                     if (input) {
@@ -76,8 +80,8 @@ function Start() {
                 } 
             }
         ]).then(data => {
-            teamMembers.push(data);
-            console.log(teamMembers);
+            const manager = new Manager(data.teamManagerName, data.managerId, data.managerEmail, data.officeNumber);
+            teamMembers.push(manager);
             if (data.confirmAdd) {
                 return addPeople()
             } else {
@@ -130,7 +134,8 @@ function intern() {
             message: 'Would you like to add another employee?'
         }
     ]).then(data => {
-        teamMembers.push(data);
+        const intern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool);
+        teamMembers.push(intern);
         if (data.addAnother) {
             return addPeople();
         } else {
@@ -143,7 +148,7 @@ function engineer() {
     return inquirer.prompt([
         {
             type: 'text',
-            name: 'engineername',
+            name: 'engineerName',
             message: 'What is the engineers name?'
         },
         {
@@ -174,30 +179,29 @@ function engineer() {
             message: 'Would you like to add another employee?'
         }
             
-     ])//.then(data => {
-
-     //}) // If confirm add true restart
+     ])
     .then(data => {
-        teamMembers.push(data);
+        console.log(data);
+        let engineer = new Engineer(data.engineerName, data.engineerEmail, data.engineerId, data.engineerGithub)
+        teamMembers.push(engineer);
         if (data.addAnother) {
             return addPeople()
         } else {
             return data;
         }
-    })
+    });
 }
 
 function init() {
     Start()
         .then(questionData => {
-            console.log(teamMembers);
             return generateTemplate(teamMembers);
         })
         .then(writePage => {
             return writeFile(writePage);
         })
         .then(response => {
-            console.log(response);
+            // clear array when done
             return copyFile();
         })
 }

@@ -1,18 +1,21 @@
 function internTemplate(intern) {
-    if(!intern) {
-        return '';
-    }
+    // if(intern === null || undefined) {
+    //     return `
+    //         <div>
+    //         </div>
+    //     `;
+    // }
     return `
             <div class="card">
                 <div class="card-head">
-                    <h3>${intern.internName}</h3>
-                    <h4>Role: </h4>
+                    <h3>${intern.getName()}</h3>
+                    <h4>Role: Intern</h4>
                 </div>
                 <div class="card-body">
                     <ul>
-                        <li>ID: ${intern.internId}</li>
-                        <li>Email: <a href="mailto: ${intern.internEmail}" target="none">${intern.internEmail}</a></li>
-                        <li>School: ${intern.internSchool}</li>
+                        <li>ID: ${intern.getId()}</li>
+                        <li>Email: <a href="mailto: ${intern.getEmail()}" target="none">${intern.getEmail()}</a></li>
+                        <li>School: ${intern.getSchool()}</li>
                     </ul>
                 </div>
             </div>
@@ -20,30 +23,79 @@ function internTemplate(intern) {
 }
 
 function engineerTemplate(engineer) {
-    if(!engineer) {
-        return '';
-    }
-
+    // if(engineer === true) {
+    //     const engineerCheck = engineer.map('engineerName')
+    //     if (!engineerCheck) {
+    //         return `
+    //             <div>
+    //             </div>
+    //         `
+    //     }
+    // }
     return `
             <div class="card">
                 <div class="card-head">
-                    <h3>${engineer.engineerName}</h3>
-                    <h4>Role: </h4>
+                    <h3>${engineer.getName()}</h3>
+                    <h4>Role: Engineer</h4>
                 </div>
                 <div class="card-body">
                     <ul>
-                        <li>ID: ${engineer.engineerId}</li>
-                        <li>Email: <a href="mailto: ${engineer.engineerEmail}" target="none">${engineer.engineerEmail}</a></li>
-                        <li>Github: <a href="https://github.com/${engineer.engineerGithub}" target="none">${engineer.engineerGithub}</a></li>
+                        <li>ID: ${engineer.getId()}</li>
+                        <li>Email: <a href="mailto: ${engineer.getEmail()}" target="none">${engineer.getEmail()}</a></li>
+                        <li>Github: <a href="https://github.com/${engineer.getGithub()}" target="none">${engineer.getGithub()}</a></li>
                     </ul>
                 </div>
             </div>
             `
 }
 
+function generateManager(manager) {
+    return `
+                <div class="card">
+                    <div class="card-head">
+                        <h3>${manager.getName()}</h3>
+                        <h4>Role: Manager</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>ID: ${manager.getId()}</li>
+                            <li>Email: <a href="mailto: ${manager.getEmail()}" target="none">${manager.getEmail()}</a></li>
+                            <li>Office number: ${manager.getOfficeNumber()}</li>
+                        </ul>
+                    </div>
+                </div>
+    `
+}
+
 module.exports = data => {
-    console.log(data);
-    const [ manager, role ] = data;
+    const html = [];
+// MANAGER
+    const manager = data.filter((employee) => {
+        return employee.getRole() === 'manager';
+    }).map((manager) => {
+        return generateManager(manager);
+    }).join('');
+
+    console.log(manager);
+    html.push(manager);
+    
+// INTERN
+    const intern = data.filter((employee) => {
+        return employee.getRole() === 'intern';
+    }).map((intern) => {
+        return internTemplate(intern);
+    }).join('');
+
+    html.push(intern);
+
+// ENGINEER
+    const engineer = data.filter((employee) => {
+        return employee.getRole() === 'engineer';
+    }).map((engineer) => {
+        return engineerTemplate(engineer);
+    }).join('');
+
+    html.push(engineer);
 
     return `
     <!DOCTYPE html>
@@ -63,21 +115,9 @@ module.exports = data => {
         </nav>
 
         <body>
-            <div class="card">
-                <div class="card-head">
-                    <h3>${manager.teamManagerName}</h3>
-                    <h4>Role: </h4>
-                </div>
-                <div class="card-body">
-                    <ul>
-                        <li>ID: ${manager.employeeId}</li>
-                        <li>Email: <a href="mailto: ${manager.managerEmailAddress}" target="none">${manager.managerEmailAddress}</a></li>
-                        <li>Office number: ${manager.officeNumber}</li>
-                    </ul>
-                </div>
+            <div class="container">
+                ${html.join('')}
             </div>
-            ${internTemplate(role)}
-            ${engineerTemplate(role)}
         </body>
     </main>
 </body>
