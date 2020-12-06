@@ -25,7 +25,7 @@ Used to keep track of data for your software team like the following
 5. Github
 
 ## Screenshot
-![page-generator](https://user-images.githubusercontent.com/15613846/101270674-f43cec00-3740-11eb-9bd6-699c19831586.JPG)
+![page-generator](https://user-images.githubusercontent.com/15613846/101271485-b80d8980-3748-11eb-8952-dfcdb50bc227.JPG)
 
 ## Video 
 [Video tutorial of how the application works](https://drive.google.com/file/d/1TtYZ1lEJVQuFn74P9UwMboGZmkbFdaN2/view)
