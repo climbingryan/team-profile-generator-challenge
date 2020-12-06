@@ -14,7 +14,7 @@ function Start() {
             {
                 type: 'text',
                 name: 'teamManagerName',
-                message: 'What is the name the team manager?',
+                message: 'What is the name of the team manager?',
                 validate: nameInput => {
                     if (nameInput) {
                         return true;

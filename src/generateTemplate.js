@@ -1,10 +1,4 @@
 function internTemplate(intern) {
-    // if(intern === null || undefined) {
-    //     return `
-    //         <div>
-    //         </div>
-    //     `;
-    // }
     return `
             <div class="card">
                 <div class="card-head">
@@ -23,15 +17,6 @@ function internTemplate(intern) {
 }
 
 function engineerTemplate(engineer) {
-    // if(engineer === true) {
-    //     const engineerCheck = engineer.map('engineerName')
-    //     if (!engineerCheck) {
-    //         return `
-    //             <div>
-    //             </div>
-    //         `
-    //     }
-    // }
     return `
             <div class="card">
                 <div class="card-head">
