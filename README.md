@@ -25,3 +25,6 @@ Used to keep track of data for your software team like the following
 
 ## Screenshot
 ![page-generator](https://user-images.githubusercontent.com/15613846/101270674-f43cec00-3740-11eb-9bd6-699c19831586.JPG)
+
+## Video Tutorial
+[Video of how the application works](https://drive.google.com/file/d/1TtYZ1lEJVQuFn74P9UwMboGZmkbFdaN2/view)
