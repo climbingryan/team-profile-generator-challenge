@@ -12,6 +12,7 @@ This node.js application allows you to make a web page for all the memebers of y
 - [Installation](#Installation)
 - [Usage](#Usage)
 - [Screenshot](#Screenshot)
+- [Video Tutorial](#Video)
 
 ## Installation
 To use this applicaition you'll need node.js to be installed on your computer, you can click on [this](https://nodejs.org/en/download/) link to take you to the node.js site. Next type in 'npm install' to download the required dependencies. After that type 'node index' or 'node index.js' to run the application. From there you'll be prompted with an array of questions to answer. Once you've completed the prompts navigate to the 'dist' folder to find your generated html file. 
@@ -26,5 +27,5 @@ Used to keep track of data for your software team like the following
 ## Screenshot
 ![page-generator](https://user-images.githubusercontent.com/15613846/101270674-f43cec00-3740-11eb-9bd6-699c19831586.JPG)
 
-## Video Tutorial
-[Video of how the application works](https://drive.google.com/file/d/1TtYZ1lEJVQuFn74P9UwMboGZmkbFdaN2/view)
+## Video 
+[Video tutorial of how the application works](https://drive.google.com/file/d/1TtYZ1lEJVQuFn74P9UwMboGZmkbFdaN2/view)
