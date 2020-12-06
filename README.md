@@ -16,5 +16,12 @@ This node.js application allows you to make a web page for all the memebers of y
 ## Installation
 To use this applicaition you'll need node.js to be installed on your computer, you can click on [this](https://nodejs.org/en/download/) link to take you to the node.js site. Next type in 'npm install' to download the required dependencies. After that type 'node index' or 'node index.js' to run the application. From there you'll be prompted with an array of questions to answer. Once you've completed the prompts navigate to the 'dist' folder to find your generated html file. 
 ## Usage
+Used to keep track of data for your software team like the following
+1. Email
+2. Id
+3. Office Number
+4. School
+5. Github
 
 ## Screenshot
+![page-generator](https://user-images.githubusercontent.com/15613846/101270674-f43cec00-3740-11eb-9bd6-699c19831586.JPG)
