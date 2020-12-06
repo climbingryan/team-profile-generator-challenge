@@ -19,6 +19,7 @@ function Start() {
                     if (nameInput) {
                         return true;
                     } else {
+                        console.log('Please enter the name of the team manager');
                         return false;
                     }
                 }
@@ -57,6 +58,7 @@ function Start() {
                     if (input) {
                         return true;
                     } else {
+                        console.log('Please enter an office number')
                         return false;
                     }
                 }
@@ -96,6 +98,13 @@ function addPeople() {
             name: 'chooseEmployeeType',
             message: 'What kind of employee would you like to add?',
             choices: ['Intern', 'Engineer'],
+            validate: input => {
+                if (input) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
         }
     ]).then(data => {
         if (data.chooseEmployeeType === 'Intern') {
@@ -111,27 +120,66 @@ function intern() {
         {
             type: 'text',
             name: 'internName',
-            message: 'what is the name of this intern?'
+            message: 'what is the name of this intern?',
+            validate: input => {
+                if (input) {
+                    return true;
+                } else {
+                    console.log('Intern name please.')
+                    return false;
+                }
+            }
         },
         {
             type: 'number',
             name: 'internId',
-            message: 'what is the interns id?'
+            message: 'what is the interns id?',
+            validate: input => {
+                if (input) {
+                    return true;
+                } else {
+                    console.log('Intern id please.')
+                    return false;
+                }
+            }
         },
         {
             type: 'text',
             name: 'internEmail',
-            message: 'What is the interns email?'
+            message: 'What is the interns email?',
+            validate: input => {
+                if (input) {
+                    return true;
+                } else {
+                    console.log('Intern email please.')
+                    return false;
+                }
+            }
         },
         {
             type: 'text',
             name: 'internSchool',
-            message: 'What school does the intern attend?'
+            message: 'What school does the intern attend?',
+            validate: input => {
+                if (input) {
+                    return true;
+                } else {
+                    console.log('School of intern please.')
+                    return false;
+                }
+            }
         },
         {
             type: 'confirm',
             name: 'addAnother',
-            message: 'Would you like to add another employee?'
+            message: 'Would you like to add another employee?',
+            validate: input => {
+                if (input) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
         }
     ]).then(data => {
         const intern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool);
@@ -149,7 +197,15 @@ function engineer() {
         {
             type: 'text',
             name: 'engineerName',
-            message: 'What is the engineers name?'
+            message: 'What is the engineers name?',
+            validate: input => {
+                if (input) {
+                    return true;
+                } else {
+                    console.log('Engineer name please.')
+                    return false;
+                }
+            }
         },
         {
             type: 'number',
@@ -159,6 +215,7 @@ function engineer() {
                 if (input) {
                     return true;
                 } else {
+                    console.log('Engineer id please.')
                     return false;
                 }
             }
@@ -166,12 +223,28 @@ function engineer() {
         {
             type: 'text',
             name: 'engineerEmail',
-            message: 'What is the engineers email?'
+            message: 'What is the engineers email?',
+            validate: input => {
+                if (input) {
+                    return true;
+                } else {
+                    console.log('Engineer email please.')
+                    return false;
+                }
+            }
         },
         {
             type: 'text',
             name: 'engineerGithub',
-            message: 'What is the engineers github?'
+            message: 'What is the engineers github?',
+            validate: input => {
+                if (input) {
+                    return true;
+                } else {
+                    console.log('Engineers github please.')
+                    return false;
+                }
+            }
         },
         {
             type: 'confirm',
@@ -201,7 +274,7 @@ function init() {
             return writeFile(writePage);
         })
         .then(response => {
-            // clear array when done
+            console.log(response);
             return copyFile();
         })
 }
