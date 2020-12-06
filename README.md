@@ -9,6 +9,12 @@
 This node.js application allows you to make a web page for all the memebers of your software development team. You can put things in like an employees id, email, office number, github, and current or previous school. Each persons data is put onto a card with a simple and easy to view color pallete. The page is also organized to show the Manager, interns, and then engineers in that order. 
 
 ## Table of Contents
-- [Installation](https://www.example.com)
-- [Usage]()
-- [Screenshot]()
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Screenshot](#Screenshot)
+
+## Installation
+To use this applicaition you'll need node.js to be installed on your computer, you can click on [this](https://nodejs.org/en/download/) link to take you to the node.js site. Next type in 'npm install' to download the required dependencies. After that type 'node index' or 'node index.js' to run the application. From there you'll be prompted with an array of questions to answer. Once you've completed the prompts navigate to the 'dist' folder to find your generated html file. 
+## Usage
+
+## Screenshot
