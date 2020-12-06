@@ -25,8 +25,8 @@ function engineerTemplate(engineer) {
                 </div>
                 <div class="card-body">
                     <ul>
-                        <li>ID: ${engineer.getEmail()}</li>
-                        <li>Email: <a href="mailto: ${engineer.getId()}" target="none">${engineer.getId()}</a></li>
+                        <li>ID: ${engineer.getId()}</li>
+                        <li>Email: <a href="mailto: ${engineer.getEmail()}" target="none">${engineer.getEmail()}</a></li>
                         <li>Github: <a href="https://github.com/${engineer.getGithub()}" target="none">${engineer.getGithub()}</a></li>
                     </ul>
                 </div>
