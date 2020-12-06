@@ -7,8 +7,8 @@ function internTemplate(intern) {
                 </div>
                 <div class="card-body">
                     <ul>
-                        <li>ID: ${intern.getId()}</li>
-                        <li>Email: <a href="mailto: ${intern.getEmail()}" target="none">${intern.getEmail()}</a></li>
+                        <li>ID: ${intern.getEmail()}</li>
+                        <li>Email: <a href="mailto: ${intern.getId()}" target="none">${intern.getId()}</a></li>
                         <li>School: ${intern.getSchool()}</li>
                     </ul>
                 </div>
@@ -25,8 +25,8 @@ function engineerTemplate(engineer) {
                 </div>
                 <div class="card-body">
                     <ul>
-                        <li>ID: ${engineer.getId()}</li>
-                        <li>Email: <a href="mailto: ${engineer.getEmail()}" target="none">${engineer.getEmail()}</a></li>
+                        <li>ID: ${engineer.getEmail()}</li>
+                        <li>Email: <a href="mailto: ${engineer.getId()}" target="none">${engineer.getId()}</a></li>
                         <li>Github: <a href="https://github.com/${engineer.getGithub()}" target="none">${engineer.getGithub()}</a></li>
                     </ul>
                 </div>
@@ -43,8 +43,8 @@ function generateManager(manager) {
                     </div>
                     <div class="card-body">
                         <ul>
-                            <li>ID: ${manager.getId()}</li>
-                            <li>Email: <a href="mailto: ${manager.getEmail()}" target="none">${manager.getEmail()}</a></li>
+                            <li>ID: ${manager.getEmail()}</li>
+                            <li>Email: <a href="mailto: ${manager.getId()}" target="none">${manager.getId()}</a></li>
                             <li>Office number: ${manager.getOfficeNumber()}</li>
                         </ul>
                     </div>
@@ -61,7 +61,6 @@ module.exports = data => {
         return generateManager(manager);
     }).join('');
 
-    console.log(manager);
     html.push(manager);
     
 // INTERN
